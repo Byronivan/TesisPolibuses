@@ -1,0 +1,64 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary" auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="primary" class="main-header4">PERFIL</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed class="ion-no-padding">
+    <ion-row>
+      <ion-col class="centrar">
+        <ion-avatar style="width: 200px;height: 200px;margin-top: 8%;">
+          <img [src]="userPhoto">
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+    <div class="login-form">
+      <ion-list class="ion-margin-top ion-padding">
+        <!-- ############ -->
+        <ion-item class="roundedInput8px margin-bottom-10">
+          <ion-label>
+            <ion-icon name="person-outline" color="medium"></ion-icon>
+          </ion-label>
+          <ion-input type="text" value={{nombre}}  readonly> </ion-input>
+        </ion-item>
+        <!-- ############ -->
+        <ion-item class="roundedInput8px margin-bottom-10" *ngIf="mostrar()==true" >
+          <ion-label>
+            <ion-icon name="people-outline" color="medium"></ion-icon>
+          </ion-label>
+          <ion-input type="text" value={{apellido}} readonly> </ion-input>
+        </ion-item>
+        <!-- ############ -->
+        <ion-item class="roundedInput8px margin-bottom-10">
+          <ion-label>
+            <ion-icon name="mail-outline" color="medium"></ion-icon>
+          </ion-label>
+          <ion-input type="text" value={{mail}} readonly> </ion-input>
+        </ion-item>
+
+        <!-- ############ -->
+        <ion-item class="roundedInput8px margin-bottom-10" *ngIf="mostrar()==true" >
+          <ion-label>
+            <ion-icon name="call-outline" color="medium"></ion-icon>
+          </ion-label>
+          <ion-input type="text" readonly value={{telefono}} ></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-button *ngIf="mostrar()==true" mode="ios" color="primary" expand="block" fill="outline" class="ion-margin-top"
+          routerLink="/module-app/modules/about/update-profile">
+          Actualizar datos
+        </ion-button>
+        
+      <ion-button mode="ios" color="danger" fill="outline" expand="block" class="ion-margin-top" (click)="logout()">
+        Cerrar Sesión
+      </ion-button>
+      
+    </div>
+  </ion-grid>
+</ion-content>

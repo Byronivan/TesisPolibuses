@@ -1,0 +1,8 @@
+{
+  "name": "poliAppM",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button type="submit" color="danger" (click)="signOut()" expand="block">
+    Sign Out
+  </ion-button>
+  <ion-item>
+    <ion-label>Users</ion-label>
+    <ion-select name="trayectoria" (ngModelChange)="onChangeC($event)" 
+      [ngModel]="trayectoria" required>
+      <ion-select-option *ngFor="let t of trayectorias" [value]="t.id">
+        {{t.nombre}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div #map style="width:500px;height:500px"></div>
+</ion-content>

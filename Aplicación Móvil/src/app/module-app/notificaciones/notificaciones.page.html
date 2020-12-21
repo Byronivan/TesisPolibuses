@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notificaciones</ion-title>
+    <ion-icon class="icono" slot="end" name="notifications"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen text-center class="icons-basic-page">
+  <ion-grid>
+    <ion-row no-padding>
+      <ion-col style="display: flex;
+      justify-content: center;">
+        <ion-card [routerLink]="['/module-app/modules/notificaciones/noticias']">
+          <ion-grid>
+            <ion-row>
+              <ion-col style="width: 25%;text-align: center;vertical-align: middle;">
+                <img src="assets/inicioBackgrounds/noticias.png" style="height: 100px;" />
+              </ion-col>
+              <ion-col style="width: 75%;">
+                <div class="card-title">Noticias</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="display: flex;
+      justify-content: center;">
+        <ion-card [routerLink]="['/module-app/modules/notificaciones/respuestas-form']">
+          <ion-grid>
+            <ion-row>
+              <ion-col style="width: 25%;text-align: center;vertical-align: middle;">
+                <ion-img src="assets/inicioBackgrounds/form.png" style="height: 100px;"></ion-img>
+              </ion-col>
+              <ion-col style="width: 75%;">
+                <div class="card-title">Formulario</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

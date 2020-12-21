@@ -1,0 +1,38 @@
+
+.icono {
+  width: 36px;
+  height: 40px;
+  font-size: 56px;
+  padding-right: 5%;
+}
+
+.centrar{
+  display: flex;
+  justify-content: center;
+}
+
+    ion-card {
+      position: relative;
+      text-align: center;
+      background-color:#0b5e774d;
+      width: 90%;
+    }
+  
+    .card-title {
+      position: absolute;
+      top: 25%;
+      font-size: 2.0em;
+      width: 100%;
+      font-weight: normal;
+      color: rgb(253, 253, 253);
+      font-family: fantasy;
+    }
+  
+    .card-subtitle {
+      font-size: 1.2em;
+      position: absolute;
+      top: 52%;
+      width: 100%;
+      color: rgb(10, 10, 10);
+    }
+  

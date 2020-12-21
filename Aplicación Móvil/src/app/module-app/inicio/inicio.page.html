@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Modulos de Rutas
+    </ion-title>
+    <ion-icon class="icono" slot="end" name="map"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen text-center class="icons-basic-page">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="centrar">
+        <ion-card [routerLink]="['/module-app/modules/inicio/rutas']">
+          <ion-grid>
+            <ion-row>
+              <ion-col style="width: 25%;text-align: center;vertical-align: middle;">
+                <img src="assets/inicioBackgrounds/nav.png" style="height: 100px;" />
+              </ion-col>
+              <ion-col style="width: 75%;">
+                <div class="card-title">Rutas</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="centrar">
+        <ion-card [routerLink]="['/module-app/modules/inicio/filtrar']">
+          <ion-grid>
+            <ion-row>
+              <ion-col style="width: 25%;text-align: center;vertical-align: middle;">
+                <img src="assets/inicioBackgrounds/mapp.png" style="height: 100px;" />
+              </ion-col>
+              <ion-col style="width: 75%;">
+                <div class="card-title">Filtrar<Br>
+                  Rutas</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="centrar">
+        <ion-card [routerLink]="['/module-app/modules/inicio/horarios']">
+          <ion-grid>
+            <ion-row>
+              <ion-col style="width: 25%;text-align: center;vertical-align: middle;">
+                <ion-img src="assets/inicioBackgrounds/horarios.png" style="height: 100px;"></ion-img>
+              </ion-col>
+              <ion-col style="width: 75%;">
+                <div class="card-title">Horarios</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

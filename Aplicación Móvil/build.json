@@ -1,0 +1,18 @@
+{
+    "android": {
+        "debug": {
+            "keystore": "polibusesapp.keystore",
+            "storePassword": "polibuses",
+            "alias": "polibusesapp",
+            "password" : "polibuses",
+            "keystoreType": ""
+        },
+        "release": {
+            "keystore": "polibusesapp.keystore",
+            "storePassword": "polibuses",
+            "alias": "polibusesapp",
+            "password" : "polibuses",
+            "keystoreType": ""
+        }
+    }
+}

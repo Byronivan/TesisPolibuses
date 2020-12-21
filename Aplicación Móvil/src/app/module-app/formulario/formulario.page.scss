@@ -1,0 +1,37 @@
+.error-container {
+    .error-message{
+        margin: 10px 5%;
+        display: flex;
+        align-items: center;
+        color: var(--ion-color-danger);
+        font-size: 14px;
+
+        ion-icon{
+            font-size: 16px;
+            padding-inline-end: 8px;
+        }
+    }
+}
+
+
+.icono {
+    width: 36px;
+    height: 40px;
+    font-size: 56px;
+    padding-right: 5%;
+  }
+
+
+  
+  .f_header3{
+    // color:#464646 !important;
+    // letter-spacing: -1px;
+    // font-size: 22px;
+    // font-weight: 300;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    color:#999 !important;
+    letter-spacing: -1px;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+  }

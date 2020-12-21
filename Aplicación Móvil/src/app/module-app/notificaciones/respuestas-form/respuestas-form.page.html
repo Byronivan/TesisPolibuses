@@ -1,0 +1,156 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="main-header4" color="primary" class="main-header4">FORMULARIOS</ion-title>
+    <ion-button slot="end" mode="ios" color="danger" fill="outline" expand="block" class="ion-margin-top" 
+    style="padding-right: 2%;" (click)="newForm()">
+      Nuevo Formulario
+    </ion-button>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="viewMode">
+      <ion-segment-button value="set1">
+        <ion-label color='success'>Aprobado</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="set2">
+        <ion-label color='danger'>Rechazado</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="set3">
+        <ion-label color='primary'>Pendiente</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed class="ion-no-padding">
+    <ion-item lines="none" style="margin-top: 2%;">
+      <label>
+        <!--<h1 class="main-header4 margin-bottom-3">{{name}}</h1>-->
+        <h1 class="f_header3 " style="text-align: center;width: 100%;">Lista de formularios enviados</h1>
+      </label>
+      <!-- <ion-button fill="none" slot="end" color="secondary"  routerLink="/side-menu/food/tabs/tab1/food-category" >View all</ion-button> -->
+    </ion-item>
+
+    <div *ngIf="viewMode==='set1'">
+      <div *ngFor="let list of tabla">
+        <ion-card mode="ios" *ngIf="list.estado == 'Aprobar'">
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img [src]="userPhoto">
+            </ion-avatar>
+            <ion-label>
+              <h3 style="text-transform: uppercase;">FORMULARIO DE {{list.tipo}}</h3>
+              <p style="text-transform: uppercase;">ENVIADO EL {{list.fecha.toDate() | date: 'dd-MM-yyyy'}}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-card-content>
+            <ion-card-title>
+              <h3 class="main_header4"> {{list.estado}}</h3>
+            </ion-card-title>
+            <p>
+              {{list.descripcion}}
+            </p>
+          </ion-card-content>
+
+          <ion-row>
+            <ion-col center class="ion-text-right">
+              <ion-button fill="clear" size="small" color="dark" class="centrar" (click)="presentAlert($event, list)">
+                <ion-icon slot="start" name="search" color="medium"></ion-icon>
+                <ion-label> RESPUESTA</ion-label>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+      </div>
+
+    </div>
+
+
+
+
+    <div *ngIf="viewMode==='set2'">
+      <div *ngFor="let list of tabla">
+        <ion-card mode="ios" *ngIf="list.estado == 'Rechazar'">
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img [src]="userPhoto">
+            </ion-avatar>
+            <ion-label>
+              <h3 style="text-transform: uppercase;">FORMULARIO DE {{list.tipo}}</h3>
+              <p style="text-transform: uppercase;">ENVIADO EL {{list.fecha.toDate() | date: 'dd-MM-yyyy'}}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-card-content>
+            <ion-card-title>
+              <h3 class="main_header4"> {{list.estado}}</h3>
+            </ion-card-title>
+            <p>
+              {{list.descripcion}}
+            </p>
+          </ion-card-content>
+
+          <ion-row>
+            <ion-col center class="ion-text-right">
+              <ion-button fill="clear" size="small" color="dark" class="centrar" (click)="presentAlert($event, list)">
+                <ion-icon slot="start" name="search" color="medium"></ion-icon>
+                <ion-label> RESPUESTA</ion-label>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+
+      </div>
+    </div>
+
+
+
+    <div *ngIf="viewMode==='set3'">
+
+
+      <div *ngFor="let list of tabla">
+        <ion-card mode="ios" *ngIf="list.estado == 'Pendiente'">
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img [src]="userPhoto">
+            </ion-avatar>
+            <ion-label>
+              <h3 style="text-transform: uppercase;">FORMULARIO DE {{list.tipo}}</h3>
+              <p style="text-transform: uppercase;">ENVIADO EL {{list.fecha.toDate() | date: 'dd-MM-yyyy'}}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-card-content>
+            <ion-card-title>
+              <h3 class="main_header4"> {{list.estado}}</h3>
+            </ion-card-title>
+            <p>
+              {{list.descripcion}}
+            </p>
+          </ion-card-content>
+
+          <ion-row>
+            <ion-col center class="ion-text-right">
+              <ion-button fill="clear" size="small" color="dark" class="centrar" (click)="presentAlert($event, list)">
+                <ion-icon slot="start" name="search" color="medium"></ion-icon>
+                <ion-label> RESPUESTA</ion-label>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+
+      </div>
+
+
+
+    </div>
+  </ion-grid>
+  <ion-content>

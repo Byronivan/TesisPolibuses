@@ -1,0 +1,23 @@
+<ion-app>
+  <ion-split-pane contentId="main-content" when="(min-width: 3000px)">
+    <ion-menu contentId="main-content">
+      <ion-content >
+        <ion-list class="padding-left-10" lines="none">
+          <ion-list-header style="text-align: center;">
+            <ion-img src="assets/initIcons/logoF.png" style="width: 80%; padding-left: 10%;border-radius: 10%;"></ion-img>
+          </ion-list-header>
+          <ion-menu-toggle autoHide="false" *ngFor="let p of layoutPages; let i = index">
+            <ion-item lines="none" [routerLink]="p.url" routerLinkActive="selected" routerDirection="root"
+              detail="false">
+              <ion-icon slot="start" [name]="p.icon + '-outline'"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content" [swipeGesture]="false"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

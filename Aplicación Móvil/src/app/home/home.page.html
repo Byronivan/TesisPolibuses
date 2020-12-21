@@ -1,0 +1,112 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic 4 Form
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/registro']" expand="block" color="primary">Register</ion-button>
+
+        <span class="divider line one-line">or</span>
+
+        <span class="already">Ya eres usuario?</span>
+
+        <ion-button [routerLink]="['/login']" expand="block" color="danger">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>-->
+
+<ion-content>
+  <div class="sign-container gradient-1">
+
+    <div class="header">
+      <div class="title ion-text-center">
+        <img src="assets/bus-logo2.png" alt="" width="80%"> 
+        <h1 style="text-align: center;lighting-color: white;border-color: white;">Iniciar Sesión</h1>
+      </div>
+    </div>
+
+    <div class="login-container">
+      <ion-list lines="none" class="form fade-in">
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input #email type="text" required class="ion-text-right"></ion-input>
+          <ion-icon slot="end" name="at"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label>Password</ion-label>
+          <ion-input class="ion-text-right" type="password" #password required></ion-input>
+          <ion-icon slot="end" name="lock"></ion-icon>
+        </ion-item>
+      </ion-list>
+
+      <div class="ion-text-center fade-in">
+        <ion-row style="justify-content: center;
+        align-content: center;
+        align-items: center;">
+            <ion-button class="green-button" type="submit" (click)="logIn(email, password)">
+              Iniciar Sesión
+            </ion-button>
+            <a [routerLink]="['/forgot-password']" class="small-text" 
+            style="width: 100%;color: black;">¿Olvidaste tu contraseña?</a>
+        </ion-row>
+        <ion-row style="margin-top: 7%;">
+          <ion-col>
+            <ion-button type="submit" color="primary" (click)="logFacebook()">Facebook
+              <ion-icon name="logo-facebook" slot="end"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button type="submit" color="danger" (click)="logGoogle()">Google
+              <ion-icon name="logo-google" slot="end"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+    <div class="sign-up-container gradient-2" [ngClass]="{'active': signupView}">
+
+      <div class="toggle-text ion-text-center" tappable (click)="toggleSignUpView()">
+
+        <span *ngIf="!signupView" [ngClass]="{'fade-in': !signupView, 'fade-out': signupView}">Registrarse</span>
+        <span *ngIf="signupView" [ngClass]="{'fade-in': signupView, 'fade-out': !signupView}">Iniciar Sesión</span>
+        <br>
+        <ion-icon name="person-add-outline" *ngIf="!signupView"
+          [ngClass]="{'fade-in': !signupView, 'fade-out': signupView}"></ion-icon>
+        <ion-icon name="log-in-outline" *ngIf="signupView"
+          [ngClass]="{'fade-in': signupView, 'fade-out': !signupView}"></ion-icon>
+
+      </div>
+
+      <ion-list lines="none" class="form" [ngClass]="{'fade-in': signupView, 'fade-out': !signupView}">
+        <h1 style="text-align: center;">Registrarse <ion-icon name="person-add-outline" slot="end"></ion-icon></h1>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input class="ion-text-right" #emailr required></ion-input>
+          <ion-icon slot="end" name="at" type="text"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Password</ion-label>
+          <ion-input class="ion-text-right" type="password" #passwordr required></ion-input>
+          <ion-icon slot="end" name="lock"></ion-icon>
+        </ion-item>
+      </ion-list>
+
+      <div class="ion-text-center" [ngClass]="{'fade-in': signupView, 'fade-out': !signupView}">
+        <ion-button class="gray-button" (click)="signUp(emailr, passwordr)">
+          Registrarse
+        </ion-button>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>

@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title color="primary" class="main-header4">INICIAR SESIÓN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen=true >
+  <ion-grid fixed class="ion-no-padding">
+    <form [formGroup]="loginForm" novalidate>
+      <div class="login-form">
+        <ion-text color="dark">
+          <h2 text-center class="ion-margin-bottom main-header7">
+            Inicia para continuar <ion-icon slot="end" name="person"></ion-icon>
+          </h2>
+        </ion-text>
+
+        <ion-list class="ion-margin-top ion-padding">
+          <ion-item class="roundedInput8px margin-bottom-10">
+            <ion-label slot="start" class="margin-right-8">
+              <ion-icon name="person-add-outline" color="medium"></ion-icon>
+            </ion-label>
+            <ion-input formControlName="username" type="email" placeholder="Correo"></ion-input>
+          </ion-item>
+
+
+          <ion-item class="roundedInput8px margin-bottom-10">
+            <ion-label slot="start" class="margin-right-8">
+              <ion-icon name="lock-closed-outline" color="medium"></ion-icon>
+            </ion-label>
+
+            <ion-input formControlName="password" type="password" placeholder="Contraseña"
+              [type]="showPassword ? 'text' : 'password'" clearOnEdit="false">
+            </ion-input>
+
+            <!-- ### Show/hide password ### -->
+            <div (click)="onPasswordToggle()" ion-button fill="clear" size="small">
+              <ion-icon slot="icon-only" color="medium" [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon>
+            </div>
+          </ion-item>
+
+          <span>
+            <p class="ion-text-right" (click)="forgot()">¿Olvidaste la contraseña?</p>
+          </span>
+
+          <!-- ############ -->
+
+          <!-- Error meassage -->
+          <ion-text color="scarletred">
+            <p *ngIf="!loginForm.controls.username.valid && loginForm.controls.username.touched">
+              <ion-icon name="information-circle-outline"></ion-icon> El usuario debe ser un correo!
+            </p>
+          </ion-text>
+          <ion-text color="scarletred">
+            <p *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.touched">
+              <ion-icon name="information-circle-outline"></ion-icon> La contraseña debe tener mínimo 6 caracteres!
+            </p>
+          </ion-text>
+
+
+        </ion-list>
+
+        <ion-button mode="ios" color="primary" expand="block" [disabled]="!loginForm.valid" (click)="login()">
+          Iniciar
+        </ion-button>
+
+        <ion-button mode="ios" color="primary" expand="block" fill="outline" class="ion-margin-top"
+          (click)="register()">
+          Nuevo Usuario
+        </ion-button>
+
+        <div class="centrar">
+          <ion-button mode="ios" color="primary" style="width: 50%;" fill="outline" class="ion-margin-top" (click)="logFacebook()">
+            Facebook <ion-icon slot="end" name="logo-facebook"></ion-icon>
+          </ion-button>
+
+          <ion-button mode="ios" color="danger" style="width: 50%;" fill="outline" class="ion-margin-top" (click)="logGoogle()">
+            Google <ion-icon slot="end" name="logo-google"></ion-icon>
+          </ion-button>
+        </div>
+
+      </div>
+    </form>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "201597807430",
+    "firebase_url": "https://polibuses-999ef.firebaseio.com",
+    "project_id": "polibuses-999ef",
+    "storage_bucket": "polibuses-999ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201597807430:android:2a3e88cf0a6a0e953f5347",
+        "android_client_info": {
+          "package_name": "io.ionic.polibusesApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201597807430-7vnsbbfbna8kdjg8615sv1pgm5qb4oem.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.polibusesApp",
+            "certificate_hash": "687e2eb713c17f741c75a486d9496ea26f70adab"
+          }
+        },
+        {
+          "client_id": "201597807430-pvd2346skh9f3tpa2u6c5h3su2i3787c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.polibusesApp",
+            "certificate_hash": "cabebd6e6abab3c3091830f3e98cce7fe5ada885"
+          }
+        },
+        {
+          "client_id": "201597807430-iru69kqetgn1r8h7vr6pua9m2mbk2ndu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB6zVNvecWni2kPf8LEdIq9edAjdIWpZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "201597807430-0oa4ohm51dhnla025m43a7c84p8978kq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

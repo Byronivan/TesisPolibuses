@@ -1,0 +1,16 @@
+<ion-card class="person-modal">
+  <ion-card-content>
+    <h3>Hola: {{form.nombre}} {{form.apellido}}</h3>
+    <div class="user-info">
+      <h2>Detalle del Formulario: </h2>
+      <h2>Tipo: {{form.tipo}}</h2>
+      <p>Fecha: {{form.fecha.toDate() | date: 'dd-MM-yyyy'}}</p>
+      <p>Descripcion: {{form.descripcion}}</p>
+    </div>
+    <div class="user-info">
+        <h2>Detalle de Respuesta: </h2>
+        <p>Estado: {{respuesta.estado.value}}</p>
+        <p>Descripcion: {{respuesta.descripcion}}</p>
+    </div>
+  </ion-card-content>
+</ion-card>

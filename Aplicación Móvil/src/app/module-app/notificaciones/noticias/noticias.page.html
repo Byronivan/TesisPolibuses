@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title slot="start" color="primary" class="main-header4">NOTICIAS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-item lines="none" style="margin-top: 2%;">
+    <label>
+      <!--<h1 class="main-header4 margin-bottom-3">{{name}}</h1>-->
+      <h1 class="f_header3 " style="text-align: center;width: 100%;">Listado de noticias</h1>
+    </label>
+    <!-- <ion-button fill="none" slot="end" color="secondary"  routerLink="/side-menu/food/tabs/tab1/food-category" >View all</ion-button> -->
+  </ion-item>
+
+
+  <ion-item *ngFor="let list of tabla" style="align-items: center;">
+    <ion-card style="width: 100%;">
+      <ion-card-header>
+        <ion-card-subtitle>Recibido el: {{list.datos.fechaCreacion.toDate() | date: 'dd-MM-yyyy'}}</ion-card-subtitle>
+        <ion-card-title>{{list.datos.asunto}}</ion-card-title>
+      </ion-card-header>
+      <div style="display: flex; align-items: center;justify-content: center;">
+        <img *ngIf="list.url" [src]="list.url" width="50%" />
+        <img *ngIf="list.url == null" src="assets/inicioBackgrounds/noticias.png" width="30%" />
+      </div>
+      <ion-card-content>
+        Fecha de aplicación:{{list.datos.fecha.toDate() | date: 'dd-MM-yyyy'}} <br>
+        {{list.datos.descripcion}}
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+</ion-content>

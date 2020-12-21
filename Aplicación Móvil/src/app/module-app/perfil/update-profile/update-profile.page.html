@@ -1,0 +1,89 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary" auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="primary" class="main-header4">ACTUALIZAR DATOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen={true}>
+
+  <div class="register-form">
+    <form [formGroup]="updateForm" novalidate>
+      <!-- Campos input -->
+      <ion-list class="ion-margin-top ion-padding">
+  
+        <ion-item class="roundedInput8px margin-bottom-10">
+          <ion-label slot="start" class="margin-right-8">
+            <ion-icon name="person-outline" color="medium"></ion-icon>
+          </ion-label>
+          <ion-input type="text" formControlName="firstname" placeholder="Nombre" [value]="(userDetail | async)?.firstname"></ion-input>
+        </ion-item>
+  
+        <ion-item class="roundedInput8px margin-bottom-10">
+          <ion-label slot="start" class="margin-right-8">
+            <ion-icon name="people-outline" color="medium"></ion-icon>
+          </ion-label>
+          <ion-input type="text" formControlName="lastname" placeholder="Apellido" [value]="(userDetail | async)?.lastname"></ion-input>
+        </ion-item>
+  
+        <ion-item class="roundedInput8px margin-bottom-10">
+          <ion-label slot="start" class="margin-right-8">
+            <ion-icon name="call-outline" color="medium"></ion-icon>
+          </ion-label>
+          <ion-input type="text" formControlName="phone" placeholder="Celular" [value]="(userDetail | async)?.phone" ></ion-input>
+        </ion-item>
+  
+        <ion-item class="roundedInput8px margin-bottom-10">
+          <ion-label slot="start" class="margin-right-8">
+            <ion-icon name="mail-outline" color="medium"></ion-icon>
+          </ion-label>
+          <ion-input type="text" formControlName="username" placeholder="Email" [value]="(userDetail | async)?.email"></ion-input>
+        </ion-item>
+  
+      </ion-list>
+  
+  
+      <!-- Error meassage -->
+      <ion-text color="danger">
+        <p *ngIf="!updateForm.controls.firstname.valid && updateForm.controls.firstname.touched">
+          <ion-icon name="information-circle-outline"></ion-icon> El nombre debe tener mínimo 3 caracteres!
+          characters long!
+        </p>
+      </ion-text>
+      <ion-text color="danger">
+        <p *ngIf="!updateForm.controls.lastname.valid && updateForm.controls.lastname.touched">
+          <ion-icon name="information-circle-outline"></ion-icon> El apellido debe tener mínimo 3 caracteres!
+        </p>
+      </ion-text>
+      <ion-text color="danger">
+        <p *ngIf="!updateForm.controls.phone.valid && updateForm.controls.phone.touched">
+          <ion-icon name="information-circle-outline"></ion-icon> Ingrese un número valido!
+        </p>
+      </ion-text>
+  
+      <ion-text color="danger">
+        <p *ngIf="!updateForm.controls.username.valid && updateForm.controls.username.touched">
+          <ion-icon name="information-circle-outline"></ion-icon> Debe ingresar un email válido!
+        </p>
+      </ion-text>
+  
+      <ion-button mode="ios" color="primary" expand="block" class="ion-margin-top" (click)="updateProfile()">
+        Actualizar Perfil
+      </ion-button>
+  
+      <ion-button mode="ios" color="danger" expand="block" fill="outline" class="ion-margin-top"
+        routerLink="/module-app/modules/about">
+        Cancel
+      </ion-button>
+  
+    </form>
+  </div>
+
+</ion-content>
+
+
+
+
+

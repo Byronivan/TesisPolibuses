@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title slot="start" color="primary" class="main-header4">FILTRAR RUTAS</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-grid fixed class="ion-no-padding" class="centrar">
+      <div class="box">
+        <div class="container-2">
+          <input type="search" [(ngModel)]="autocomplete" id="search" adressType="geocode"
+            (keydown.enter)="$event.preventDefault()" placeholder="Ingresa una direccion..." autocorrect="off"
+            autocapitalize="off" spellcheck="off" type="text" #search />
+        </div>
+      </div>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none" style="margin-top: 2%;">
+    <label>
+      <!--<h1 class="main-header4 margin-bottom-3">{{name}}</h1>-->
+      <h1 class="f_header3 " style="text-align: justify;">Ingresa una dirección para buscar rutas cercanas. Puedes usar el buscador o el marcador en el mapa.</h1>
+    </label>
+    <!-- <ion-button fill="none" slot="end" color="secondary"  routerLink="/side-menu/food/tabs/tab1/food-category" >View all</ion-button> -->
+  </ion-item>
+
+  <ion-button mode="ios" color="orange" fill="outline" expand="block" class="ion-margin-top" (click)="filtro()">
+    Buscar Rutas Cercanas
+  </ion-button>
+
+  <div #map style="width: 100%;height:40vh; margin-top: 6%;"></div>
+  <ion-item lines="none">
+    <label>
+      <!--<h1 class="main-header4 margin-bottom-3">{{name}}</h1>-->
+      <h1 class="f_header3 ">Listado de Rutas mas cercanas a la ubicación ingresada</h1>
+    </label>
+    <!-- <ion-button fill="none" slot="end" color="secondary"  routerLink="/side-menu/food/tabs/tab1/food-category" >View all</ion-button> -->
+  </ion-item>
+
+  <ion-item *ngFor="let list of tabla">
+    <ion-icon name="navigate-circle-outline" slot="start" color='success'></ion-icon>
+    <ion-label>
+      <h2 style="text-transform: uppercase;">{{list.ruta.nombre}}</h2>
+      <p>La ruta esta en la zona {{list.ruta.zona}}</p>
+      <p>Parada más cercana a {{list.distance}} KM</p>
+    </ion-label>
+    <ion-button fill="outline" slot="end" (click)= "graficar(list)">Ver</ion-button>
+  </ion-item>
+
+</ion-content>

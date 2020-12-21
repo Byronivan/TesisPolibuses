@@ -1,0 +1,147 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary" auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="primary" class="main-header4">HORARIOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen={true}>
+
+  <ion-item lines="none">
+    <label style="margin-top: 2%;">
+      <!--<h1 class="main-header4 margin-bottom-3">{{name}}</h1>-->
+      <h1 class="f_header3 " style="text-align: justify;">Selecciona los filtros para buscar los horarios correspondientes a la ruta seleccionada
+      </h1>
+    </label>
+    <!-- <ion-button fill="none" slot="end" color="secondary"  routerLink="/side-menu/food/tabs/tab1/food-category" >View all</ion-button> -->
+  </ion-item>
+
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+        <label>
+          <!--<h1 class="main-header4 margin-bottom-3">{{name}}</h1>-->
+          <h1 class="f_header4" style="color: #3c763d;">Lugar de origen <ion-icon name="flag" slot="end"></ion-icon></h1>
+        </label>
+      </ion-row>
+      <ion-row>
+        <label>
+          <!--<h1 class="main-header4 margin-bottom-3">{{name}}</h1>-->
+          <h1 class="f_header4" style="color: #31708f;">Paradas intermedias <ion-icon name="navigate" slot="end"></ion-icon></h1>
+          
+        </label>
+      </ion-row>
+      <ion-row>
+        <label>
+          <!--<h1 class="main-header4 margin-bottom-3">{{name}}</h1>-->
+          <h1 class="f_header4" style="color: #a94442;">Lugar de destino <ion-icon name="flag" slot="end"></ion-icon></h1>
+        </label>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">
+        ZONA
+      </ion-label>
+      <ion-select placeholder="Selecciona una Zona" interface="popover" name="trayectoria"
+        (ngModelChange)="onChangeC($event)" [ngModel]="zona" required style="text-align: center;">
+        <ion-select-option value="Norte">Norte</ion-select-option>
+        <ion-select-option value="Sur">Sur</ion-select-option>
+        <ion-select-option value="Valle">Valle</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">
+        RUTA
+      </ion-label>
+      <ion-select placeholder="Selecciona una Ruta" interface="popover" name="trayectoria"
+        (ngModelChange)="onChange($event)" [ngModel]="trayectoria" required style="text-align: center;">
+        <ion-select-option *ngFor="let t of rutas" [value]="t.trayectoria">
+          {{t.nombre}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+  </ion-list>
+
+  <ion-grid fixed class="ion-no-padding">
+    <div>
+      <ion-row>
+        <ion-col size-lg="6" size-md="6" size-sm="12" size="12">
+
+          <!--*********** Details ***********-->
+          <ion-item lines="none">
+            <h5 class="main-header5">Detalle</h5>
+          </ion-item>
+
+          <ion-item lines="none" class="ion-wrap">
+            <ion-icon class="margin-left-8" name="navigate-circle-outline" slot="start" color="medium" size="large">
+            </ion-icon>
+            <ion-label class="ion-text-wrap">
+              <h2>{{rutanombre}}</h2>
+              <p>{{descripcion}}</p>
+            </ion-label>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-list class="ion-margin-top ion-padding-top">
+        <ion-item *ngFor="let list of tabla" lines="none">
+
+          <ion-avatar slot="start">
+            <ion-icon class='icono' name={{list.icono}} [ngStyle]="{'color': list.color}"></ion-icon>
+          </ion-avatar>
+
+          <ion-label>
+            <h2>{{list.id}}. {{list.nombre}}</h2>
+            <p>Hora Mañana: {{list.horaM}}</p>
+            <p>Hora Noche: {{list.horaN}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-grid>
+
+
+
+</ion-content>
+
+<!--
+<ion-content>
+
+  <ion-item>
+    <p>{{rutanombre}}</p>
+  </ion-item>
+
+  <ion-item>
+    <p>{{descripcion}}</p>
+  </ion-item>
+
+  <ion-content fullscreen>
+    <ion-list>
+      <ion-list-header>
+        <h5>Detalle de Horarios</h5>
+      </ion-list-header>
+
+      <ion-item *ngFor="let list of tabla">
+        <ion-avatar slot="start">
+          <ion-icon name={{list.icono}} [ngStyle]="{'color': list.color}"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{list.id}}. {{list.nombre}}</h2>
+          <p>Hora Mañana: {{list.horaM}}</p>
+          <p>Hora Noche: {{list.horaN}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-content>
+
+-->

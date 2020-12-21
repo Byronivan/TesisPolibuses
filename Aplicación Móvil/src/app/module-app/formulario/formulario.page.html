@@ -1,0 +1,195 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary" auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="primary" class="main-header4">ENVIAR FORMULARIO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+
+  <ion-item lines="none" style="margin-top: 2%;">
+    <label>
+      <!--<h1 class="main-header4 margin-bottom-3">{{name}}</h1>-->
+      <h1 class="f_header3 " style="text-align: justify;">Llena toda la información necesaria para poder atender tu requerimiento.</h1>
+    </label>
+    <!-- <ion-button fill="none" slot="end" color="secondary"  routerLink="/side-menu/food/tabs/tab1/food-category" >View all</ion-button> -->
+  </ion-item>
+
+
+  <ion-grid fixed class="ion-no-padding">
+    <ion-grid>
+        <ion-card mode="ios" mode="ios" class="ion-padding">
+          <form [formGroup]="form" (ngSubmit)="registrar()">
+            <ion-item [hidden]="true" lines="full">
+              <ion-input type="text" formControlName="id"></ion-input>
+            </ion-item>
+
+            <ion-list>
+              <!-- ############ -->
+              <ion-item class="roundedInput25px">
+                <ion-input formControlName="nombre" placeholder="Nombre"></ion-input>
+                <ion-label>
+                  <ion-icon name="person-outline"></ion-icon>
+                </ion-label>
+              </ion-item>
+
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.nombre.errors?.required">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    El nombre es requerido
+                  </span>
+                </div>
+              </div>
+
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.nombre.errors?.pattern">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    No se admiten números en el nombre
+                  </span>
+                </div>
+              </div>
+
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.nombre.errors?.minLength">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    Nombre no válido
+                  </span>
+                </div>
+              </div>
+
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.nombre.errors?.maxLength">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    Nombre no válido
+                  </span>
+                </div>
+              </div>
+
+              <!-- ############ -->
+              <ion-item class="ion-padding-end" class="roundedInput25px">
+                <ion-input formControlName="apellido" placeholder="Apellido"></ion-input>
+                <ion-label>
+                  <ion-icon color="medium" name="people-outline"></ion-icon>
+                </ion-label>
+
+              </ion-item>
+
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.apellido.errors?.required">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    El apellido es requerido
+                  </span>
+                </div>
+              </div>
+
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.apellido.errors?.pattern">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    No se admiten números en el apellido
+                  </span>
+                </div>
+              </div>
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.apellido.errors?.minLength">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    Apellido no válido
+                  </span>
+                </div>
+              </div>
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.apellido.errors?.maxLength">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    Apellido no válido
+                  </span>
+                </div>
+              </div>
+
+              <!-- ############ -->
+              <ion-item class="ion-padding-end" class="roundedInput25px">
+                <ion-input formControlName="telefono" placeholder="Teléfono"></ion-input>
+                <ion-label>
+                  <ion-icon color="medium" name="call-outline"></ion-icon>
+                </ion-label>
+              </ion-item>
+
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.telefono.errors?.pattern">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    No se admiten letras en el número de teléfono
+                  </span>
+                </div>
+              </div>
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.telefono.errors?.maxLength">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    Ingresa un número de teléfono correcto
+                  </span>
+                </div>
+              </div>
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.telefono.errors?.minLength">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    Ingresa un número de teléfono correcto
+                  </span>
+                </div>
+              </div>
+
+
+              <!-- ############ -->
+              <ion-item class="roundedInput25px">
+                <ion-textarea formControlName="descripcion" rows="6" placeholder="Ingrese la descripción">
+                </ion-textarea>
+                <!-- <ion-input placeholder="Username" ></ion-input> -->
+              </ion-item>
+
+
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.descripcion.errors?.required">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    La descripción es requerida
+                  </span>
+                </div>
+              </div>
+
+              <!-- ############ -->
+              <ion-item class="roundedInput25px">
+                <ion-label color="medium">Tipo de Formulario</ion-label>
+                <ion-select formControlName="formulario" placeholder="Seleccionar">
+                  <ion-select-option value="Queja">Queja</ion-select-option>
+                  <ion-select-option value="Sugerencia">Sugerencia</ion-select-option>
+                  <ion-select-option value="Novedad">Novedad</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <div class="error-container">
+                <div class="error-message" *ngIf="f.formulario.errors?.required">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>
+                    Elija un tipo de formulario
+                  </span>
+                </div>
+              </div>
+
+              <!-- ############ -->
+              <ion-button class="ion-margin-top" type="submit" [disabled]='!form.valid' color="success" expand="block">
+                Enviar</ion-button>
+            </ion-list>
+          </form>
+        </ion-card>
+    </ion-grid>
+  </ion-grid>
+</ion-content>
