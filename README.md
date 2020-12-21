@@ -7,4 +7,4 @@ Manual Técnico: https://epnecuador-my.sharepoint.com/:w:/r/personal/byron_loart
 
 Manual de Usuario: https://www.youtube.com/watch?v=IHsXgXsXoxI&list=LL&index=10
 
-Manual de Instalación: 
+Manual de Instalación:  
