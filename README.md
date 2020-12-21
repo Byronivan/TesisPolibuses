@@ -7,4 +7,4 @@ Manual Técnico: https://epnecuador-my.sharepoint.com/:w:/r/personal/byron_loart
 
 Manual de Usuario: https://www.youtube.com/watch?v=IHsXgXsXoxI&list=LL&index=10
 
-Manual de Instalación: Corregir 
+Manual de Instalación: https://epnecuador-my.sharepoint.com/:w:/r/personal/byron_loarteb_epn_edu_ec/_layouts/15/Doc.aspx?sourcedoc=%7B92D0DBD6-589E-4755-915E-A171F3574199%7D&file=Manual%20de%20Instalaci%C3%B3n-BORJA-PAREDES.docx&action=default&mobileredirect=true 
