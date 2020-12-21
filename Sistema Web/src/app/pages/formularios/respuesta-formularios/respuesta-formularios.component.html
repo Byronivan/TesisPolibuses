@@ -1,0 +1,124 @@
+<div class="register-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+
+        <mat-card-header fxLayoutAlign="center center">
+            <mat-card-title>
+                <h4>Detalle del formulario de {{formulario.tipo}}</h4>
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div fxLayout="row wrap" fxLayoutGap="3px grid">
+                <!--Detalle del formulario-->
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                    <div fxLayout="row wrap" fxLayoutGap="6px grid">
+
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 90%;">
+                                <mat-label>Nombre</mat-label>
+                                <input matInput placeholder="Nombre" [(ngModel)]="formulario.nombre"
+                                    readonly="readonly">
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 90%;">
+                                <mat-label>Apellido</mat-label>
+                                <input matInput placeholder="Apellido" [(ngModel)]="formulario.apellido"
+                                    readonly="readonly">
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 90%;"> 
+                                <mat-label>Email</mat-label>
+                                <input matInput placeholder="Email" [(ngModel)]="formulario.email" readonly="readonly">
+                                <mat-icon matSuffix>email</mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 90%;">
+                                <mat-label>Teléfono</mat-label>
+                                <input matInput placeholder="Número de teléfono" [(ngModel)]="formulario.telefono"
+                                    type="number" readonly="readonly">
+                                <mat-icon matSuffix>smartphone</mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 90%;">
+                                <mat-label>Tipo</mat-label>
+                                <input matInput placeholder="Tipo de Formulario" [(ngModel)]="formulario.tipo"
+                                    readonly="readonly">
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 90%;">
+                                <mat-label>Descripción</mat-label>
+                                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10" required
+                                    [(ngModel)]="formulario.descripcion" readonly="readonly" style="height: inherit;"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.lt-sm="100">
+                            <h3>Responder</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Respuesta-->
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                    <form [formGroup]="form" (ngSubmit)="operar()">
+                        <div fxLayout="row wrap" fxLayoutGap="6px grid">
+                            <div [hidden]="true">
+                                <mat-form-field>
+                                    <input matInput placeholder="id" formControlName="id">
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="100" fxFlex.lt-sm="100">
+                                <mat-form-field style="width: 100%;">
+                                    <mat-label>Aprobar o Rechazar</mat-label>
+                                    <mat-select formControlName="estado" required>
+                                        <mat-option *ngFor="let r of respuesta" [value]="r">
+                                            {{r.value}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex="100" fxFlex.lt-sm="100">
+                                <mat-form-field style="width: 100%;">
+                                    <mat-label>Respuesta</mat-label>
+                                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                        cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10" required
+                                        formControlName="descripcion"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <mat-card-content class="botones" fxLayoutAlign="center center">
+                            <div fxLayout="row wrap" fxLayoutGap="30px grid">
+                                <div fxFlex="50" fxFlex.lt-sm="100">
+                                    <button mat-stroked-button color="accent" class="btn-block" type="submit"
+                                        [disabled]="form.invalid">Enviar Respuesta</button>
+                                </div>
+
+                                <div fxFlex="50" fxFlex.lt-sm="100">
+                                    <button mat-stroked-button color="warn" routerLink="/visualizarFormulario"
+                                        class="btn-block">Cancelar</button>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </form>
+                </div>
+
+            </div>
+
+
+
+
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,98 @@
+<router-outlet></router-outlet>
+<div *ngIf="route.children.length == 0">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="box">
+            <div fxLayoutAlign="start">
+                <button mat-stroked-button color="warn" matTooltip="Regresar" routerLink='/moduloRutas'>
+                    <mat-icon>first_page</mat-icon>
+                    Regresar
+                </button>
+            </div>
+            <mat-card-header fxLayoutAlign="center center">
+                <mat-card-title fxLayoutAlign="center center">
+                    <h2>Rutas</h2>
+                </mat-card-title>
+                <mat-card-title fxLayoutAlign="center center">
+                    <button mat-raised-button color="primary" matTooltip="Agregar nueva Ruta"
+                        routerLink='/moduloRutas/visualizarRutas/registrarRutas'>
+                        Nueva Ruta
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </mat-card-title>
+            </mat-card-header>
+
+            <div fxLayout fxLayoutAlign="center center">
+                <mat-form-field fxFlex="40%">
+                    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+            </div>
+
+            <mat-card-content>
+                <form class="matero-form-horizontal">
+                    <mat-table [dataSource]="dataSource" matSort>
+                        <ng-container matColumnDef="nombre">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre de la trayectoria
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.nombre}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="zona">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Zona de la trayectoria
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.zona}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="trayectoria">
+                            <mat-header-cell *matHeaderCellDef>Trayectoria</mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <button mat-icon-button style="color: green;" *ngIf="row.trayectoria != ''">
+                                    <mat-icon aria-label="Visualizar">directions</mat-icon>Asignado
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="bus">
+                            <mat-header-cell *matHeaderCellDef>Bus</mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <button mat-icon-button style="color: green;" *ngIf="row.bus != 'Sin Bus asignado'">
+                                    <mat-icon aria-label="Visualizar">directions_bus</mat-icon>Asignado
+                                </button>
+
+                                <button mat-icon-button style="color: red;" *ngIf="row.bus == 'Sin Bus asignado'">
+                                    <mat-icon aria-label="Visualizar">departure_board</mat-icon>Sin Bus
+                                </button>
+
+                            </mat-cell>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="acciones">
+                            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <button mat-icon-button color="primary" matTooltip="Visualizar" (click)="verRuta(row)">
+                                    <mat-icon aria-label="Dialogo">search</mat-icon>
+                                </button>
+
+                                <button mat-icon-button color="primary" matTooltip="Modificar"
+                                    [routerLink]="['edicionRuta', row.id]">
+                                    <mat-icon aria-label="Actualizar">edit</mat-icon>
+                                </button>
+
+                                <button mat-icon-button color="accent" matTooltip="Eliminar" (click)="eliminar(row)">
+                                    <mat-icon aria-label="Eliminar">highlight_off</mat-icon>
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+
+                    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5]">
+                    </mat-paginator>
+                </form>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

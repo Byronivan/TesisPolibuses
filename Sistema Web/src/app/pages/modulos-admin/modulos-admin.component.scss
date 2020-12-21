@@ -1,0 +1,67 @@
+
+ $gutter: 16px !default;
+
+.page-wrap{
+  display:flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+
+ .matero-col {
+   padding-right: $gutter/2;
+   padding-left: $gutter/2;
+ }
+
+
+ .matero-row{
+   padding-top: 5%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+ .mat-card{
+  margin-bottom: $gutter;
+
+  background: rgba(49, 138, 172, 0.5);
+  border: 2px solid;
+  border-color: #318aac;
+ 
+}
+
+.mat-card:hover {
+  color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+  transition: all 0.2s ease;
+
+}
+
+
+.icono {
+  width: 100px;
+  height: 100px;
+  font-size: 56px;
+
+  
+}
+
+
+.flex-item {
+ 
+  
+  text-align: center;
+}
+
+main{
+display: flex;
+flex-direction: column;
+>*:not(router-outlet){
+  flex:1;
+  display: block;
+}
+}

@@ -1,0 +1,138 @@
+<div class="all-wrap" fullscreen>
+    <!--header login o home-->
+    <mat-toolbar color="primary" class="example-header" fxLayout="row" *ngIf="loginService.estaLogeado()!=true">
+        <img src="assets/iconos/EPN_logo_big.png" width="7%">
+        <span class="spacer"></span>
+        <h1 *ngIf="router.url === '/login'">Iniciar Sesión</h1>
+        <h1 *ngIf="router.url === '/home'">Polibuses</h1>
+        <span class="spacer"></span>
+
+        <button mat-icon-button routerLink="/home" *ngIf="router.url === '/login'" style="width: 5%;">
+            <mat-icon style="width: inherit; height: inherit;">home</mat-icon>
+        </button>
+
+        <button mat-raised-button color="accent" routerLink="/login" *ngIf="router.url === '/home'" style="width: 12%;">
+            <mat-icon style="width: inherit; height: inherit;">person</mat-icon>
+            Iniciar Sesión
+        </button>
+
+    </mat-toolbar>
+
+    <!--header-->
+    <mat-toolbar color="primary" class="example-header" fxLayout="row" *ngIf="loginService.estaLogeado()">
+
+        <!--Header Opciones y logo-->
+        <div class="columna" style="width: 100%; height: inherit;">
+            <div style="width: 30%; height: inherit;" fxLayoutAlign="center center">
+                <button mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon *ngIf="!sidenav.opened" style="width: inherit; height: inherit;">menu</mat-icon>
+                    <mat-icon *ngIf="sidenav.opened" style="width: inherit; height: inherit;">close</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <!--Header Texto medio-->
+        <div class="columna" style="width: 100%; height: inherit;" fxLayoutAlign="center center">
+            <h1>Administración PoliBuses</h1>
+        </div>
+
+        <!--Header Fecha, Botones atras y cerrar-->
+        <div class="columna" style="width: 100%; height: inherit;" fxLayoutAlign="end">
+            <table>
+                <tr>
+                    <td>{{fecha}}</td>
+                </tr>
+                <tr>
+                    <td>{{hora}}:{{minutos}}:{{segundos}}{{ampm}}</td>
+                </tr>
+            </table>
+
+            <!--<div style="width: 24%;" fxLayoutAlign="center center">
+                <button mat-fab (click)="backClicked()"
+                    style="height: inherit; background-color:rgba(8, 151, 156, 0.459);" matTooltip="Volver">
+                    <mat-icon style="width: inherit; height: inherit;">first_page</mat-icon>
+                </button>
+            </div>
+            -->
+            <div style="width: 30%;" fxLayoutAlign="center center">
+                <button mat-raised-button (click)="loginService.cerrarSesion()" (click)="sidenav.opened = false"
+                    style="width: 95%;background-color: hsla(0, 0%, 0%, 0.582);">
+                    <mat-icon style="width: inherit; height: inherit;color: white;">exit_to_app</mat-icon>
+                    <span style="color: white;height: inherit;">Cerrar Sesión</span>
+                </button>
+            </div>
+        </div>
+    </mat-toolbar>
+
+    <!--slide y contenido-->
+    <mat-sidenav-container class="example-container" style="background-color: transparent;">
+        <mat-sidenav #sidenav mode="side" class="example-sidenav ">
+
+            <!--banner-->
+            <div style="width: 100%;height: 150px;" fxLayoutAlign="center center">
+                <img src="../assets/bus-logo2.png" width="100%">
+            </div>
+            <mat-divider></mat-divider>
+            <!--User-->
+            <div style="width: 100%;height: 130px" fxLayoutAlign="center center"
+                *ngIf="loginService.getCurrentUser().url != 'sin url'">
+                <img [src]="loginService.getCurrentUser().url"
+                    style="width: 105px;height: inherit; border: black 1px solid;border-radius: 50%;margin-top: 3%;">
+            </div>
+            <!--User-->
+            <div style="width: 100%;height: 30px" fxLayoutAlign="center center">
+                <h4>Usuario: <a style="color: #0000ff;">{{loginService.getCurrentUser().usuario}}</a></h4>
+            </div>
+            <mat-divider></mat-divider>
+
+            <!---->
+            <div *ngFor="let m of menus">
+                <button mat-menu-item routerLink="{{m.url}}" style="width: 100%;height: 50px;border-color: transparent;"
+                    fxLayoutAlign=" center" *ngIf="m.nombre == 'Mi Perfil'">
+
+                    <div style="width: 40%;">
+                        <mat-icon>{{m.icono}}</mat-icon>
+                    </div>
+                    <span>{{m.nombre}}</span>
+                </button>
+                <mat-divider *ngIf="m.nombre == 'Mi Perfil'"></mat-divider>
+            </div>
+
+            <div *ngFor="let m of menus">
+                <button mat-menu-item routerLink="{{m.url}}" style="width: 100%;height: 50px;border-color: transparent;"
+                    fxLayoutAlign=" center" *ngIf="m.nombre == 'Personal Administrativo'">
+
+                    <div style="width: 40%;">
+                        <mat-icon>{{m.icono}}</mat-icon>
+                    </div>
+                    <span>{{m.nombre}}</span>
+                </button>
+                <mat-divider *ngIf="m.nombre == 'Personal Administrativo'"></mat-divider>
+            </div>
+
+
+
+            <!--botones dinamicos-->
+            <div *ngFor="let m of menus">
+                <button mat-menu-item routerLink="{{m.url}}" style="width: 100%;height: 50px;border-color: transparent;"
+                    fxLayoutAlign=" center" *ngIf="m.nombre != 'Personal Administrativo' && m.nombre != 'Mi Perfil'">
+                    <div style="width: 40%;">
+                        <mat-icon>{{m.icono}}</mat-icon>
+                    </div>
+                    <span>{{m.nombre}}</span>
+                </button>
+                <mat-divider *ngIf="m.nombre != 'Personal Administrativo' && m.nombre != 'Mi Perfil'"></mat-divider>
+            </div>
+
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+
+    <!--footer-->
+    <mat-toolbar class="example-footer" color="secundary" *ngIf="loginService.estaLogeado()"
+        fxLayoutAlign="center center" style="height: 5%;">Escuela Politécnica Nacional - 2020</mat-toolbar>
+</div>

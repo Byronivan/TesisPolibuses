@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="operar()">
+    <div [hidden]="true">
+        <mat-form-field>
+            <input matInput placeholder="id" formControlName="id">
+        </mat-form-field>
+    </div>
+
+    <h3>Angular 7 Image Preview before Upload:</h3>
+    <span style="color:red;" *ngIf="message">{{message}}</span>
+    <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+    <img [src]="imgURL" height="200" *ngIf="imgURL">
+
+
+    <mat-card-content class="botones">
+        <div fxLayout="row wrap" fxLayoutGap="30px grid">
+            <div fxFlex="50" fxFlex.lt-sm="100">
+                <button mat-stroked-button color="accent" class="btn-block" type="submit">Guardar</button>
+            </div>
+        </div>
+    </mat-card-content>
+</form>

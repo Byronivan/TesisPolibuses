@@ -1,0 +1,89 @@
+<router-outlet></router-outlet>
+<div *ngIf="route.children.length == 0" fxLayout="row" fxLayoutAlign="center center"
+    style="background-color:transparent;">
+    <mat-card class="box">
+        <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-title fxLayoutAlign="center center">
+                <h4> Usuario</h4>
+            </mat-card-title>
+
+            <mat-card-title fxLayoutAlign="center center">
+                <div style="width: 100%;height: 130px" fxLayoutAlign="center center"
+                *ngIf="loginService.getCurrentUser().url != 'sin url'">
+                <img [src]="loginService.getCurrentUser().url"
+                    style="width: 105px;height: inherit; border: black 1px solid;">
+            </div>
+            </mat-card-title>
+            
+        </mat-card-header>
+
+        <mat-card-content>
+            <div fxLayout="row wrap" fxLayoutGap="3px grid">
+                <div [hidden]="true">
+                    <mat-form-field>
+                        <input matInput placeholder="id" [(ngModel)]="usuario.uid">
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="50" fxFlex.lt-sm="100">
+                    <mat-form-field style="width: 90%;">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="Nombre del Personal" [(ngModel)]="usuario.nombre"
+                            readonly="readonly">
+                    </mat-form-field>
+
+                </div>
+
+                <div fxFlex="50" fxFlex.lt-sm="100">
+                    <mat-form-field style="width: 90%;">
+                        <mat-label>Apellido</mat-label>
+                        <input matInput placeholder="Apellido del Personal" [(ngModel)]="usuario.apellido"
+                            readonly="readonly">
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="50" fxFlex.lt-sm="100">
+                    <mat-form-field style="width: 90%;">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Email" [(ngModel)]="usuario.email" readonly="readonly">
+                        <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="50" fxFlex.lt-sm="100" *ngIf="loginService.getCurrentUser().usuario != 'adminpolibus@epn.edu.ec'">
+                    <mat-form-field style="width: 90%;">
+                        <mat-label>Teléfono</mat-label>
+                        <input matInput placeholder="Número de teléfono" [(ngModel)]="usuario.celular" type="number"
+                            readonly="readonly">
+                        <mat-icon matSuffix>smartphone</mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="50" fxFlex.lt-sm="100" *ngIf="loginService.getCurrentUser().usuario != 'adminpolibus@epn.edu.ec'">
+                    <mat-form-field style="width: 90%;">
+                        <mat-label>Cédula de identidad</mat-label>
+                        <input matInput placeholder="Número de identidad" [(ngModel)]="usuario.cedula" type="number"
+                            readonly="readonly">
+                        <mat-icon matSuffix>contacts</mat-icon>
+                    </mat-form-field>
+                </div>
+
+
+                <div fxFlex="50" fxFlex.lt-sm="100">
+                    <mat-form-field style="width: 90%;">
+                        <mat-label>Rol Asignado</mat-label>
+                        <input matInput placeholder="Rol asignado" [(ngModel)]="usuario.rol" type="text"
+                            readonly="readonly">
+                        <mat-icon matSuffix>contacts</mat-icon>
+                    </mat-form-field>
+                </div>
+
+            </div>
+
+            <mat-card-content class="botones" fxLayoutAlign="center center" *ngIf="loginService.getCurrentUser().usuario != 'adminpolibus@epn.edu.ec'" >
+                <button mat-stroked-button color="warn" type="button" class="btn-block"
+                    [routerLink]="['modificarPerfil']">Actualizar datos</button>
+            </mat-card-content>
+        </mat-card-content>
+    </mat-card>
+</div>

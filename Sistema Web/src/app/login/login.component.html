@@ -1,0 +1,91 @@
+<div class="page-wrap">
+      
+        <main class="content">
+          <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+      
+            <mat-card class="box" *ngIf="estadoLogin">
+              <mat-card-header>
+                <img src="assets/iconos/usuario.png" width="50px">
+                <mat-card-title>
+                  Iniciar Sesión</mat-card-title>
+              </mat-card-header>
+      
+              <mat-card-content>
+                <mat-form-field appearance="fill" class="example-full-width">
+                  <mat-label>Ingrese el Usuario</mat-label>
+                  <input matInput placeholder="Usuario" [(ngModel)]="usuario" required>
+                </mat-form-field>
+      
+
+                <mat-form-field appearance="fill" class="example-full-width">
+                  <mat-label>Ingrese la contraseña</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="clave" placeholder="Contraseña" required>
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+      
+              </mat-card-content>
+      
+              <mat-card-actions>
+                <button mat-stroked-button color="primary" (click)="login()" class="btn-block">Iniciar Sesión</button>
+              </mat-card-actions>
+      
+              <mat-card-content class="notaRegistrar">
+                <button mat-stroked-button color="warn" (click)="irRecuperar()" class="btn-block">Recuperar Contraseña</button>
+              </mat-card-content>
+      
+              <mat-card-content class="notaRegistrar1">
+                <ul>
+                  <li type="square">Para acceder al sistema deberá ingresar la contraseña enviada a su correo
+                    electronico.</li>
+                  <li type="square">RECUERDE: No proporcione su contraseña a terceros.</li>
+                </ul>
+      
+              </mat-card-content>
+      
+            </mat-card>
+      
+      
+      
+            <mat-card class="box" *ngIf="estadoRecuperar">
+              <mat-card-header>
+                <img src="assets/iconos/usuario.png" width="50px">
+                <mat-card-title>
+                  Recuperar Contraseña
+                </mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+      
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Usuario" [(ngModel)]="usuario" required>
+                </mat-form-field>
+      
+      
+              </mat-card-content>
+      
+              <mat-card-content>
+                <div fxLayout="row wrap" fxLayoutGap="6px grid">
+                  <div fxFlex="50" fxFlex.lt-sm="100">
+                    <button mat-stroked-button color="primary" (click)="irLogin()" class="btn-block">Atrás</button>
+                  </div>
+      
+                  <div fxFlex="50" fxFlex.lt-sm="100">
+                    <button mat-stroked-button color="warn" (click)="restablecerClave()" class="btn-block">Enviar
+                      Correo</button>
+                  </div>
+      
+                </div>
+      
+              </mat-card-content>
+      
+            </mat-card>
+      
+      
+      
+      
+          </div>
+      
+      
+        </main>
+      </div>

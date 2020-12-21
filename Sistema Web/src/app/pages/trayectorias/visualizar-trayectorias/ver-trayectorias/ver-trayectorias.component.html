@@ -1,0 +1,93 @@
+<div style="width: 100%;" fxLayoutAlign="center center">
+    <div class="columna" style="height: inherit;" fxLayoutAlign="center center">
+        <div style="width: 90%; height: inherit;">
+            <mat-card class="box">
+                <div fxLayoutAlign="start">
+                    <button mat-stroked-button color="warn" matTooltip="Regresar" (click)="cancelar()">
+                        <mat-icon>first_page</mat-icon>
+                        Regresar
+                    </button>
+                </div>
+                <mat-card-header fxLayoutAlign="center center">
+                    <mat-card-title>
+                        Detalles de la Trayectoria
+                    </mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <div fxLayout="row wrap" fxLayoutGap="6px grid">
+
+                        <div [hidden]="true">
+                            <input matInput placeholder="id">
+                        </div>
+
+                        <div fxFlex="100" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 95%;">
+                                <input matInput placeholder="Nombre de Trayectoria" [(ngModel)]="trayectoria.nombre"
+                                    readonly="readonly" required>
+                            </mat-form-field>
+
+                        </div>
+
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 95%;">
+
+                                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10" class="input" type="text"
+                                    placeholder="Origen (Punto A)" [(ngModel)]="autocompleteInput" #addresstext
+                                    readonly="readonly"></textarea>
+                            </mat-form-field>
+                        </div>
+
+
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 95%;">
+                                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10" class="input" type="text"
+                                    [(ngModel)]="autocompleteInput2" placeholder="Destino (Punto B)" #addresstext2
+                                    readonly></textarea>
+                            </mat-form-field>
+
+                        </div>
+
+                        <div fxFlex="100" fxFlex.lt-sm="100" fxLayoutAlign="center center">
+                            <mat-label>
+                                <h3>Paradas</h3>
+                            </mat-label>
+                        </div>
+
+                        <mat-table [dataSource]="dataSource" matSort fxFlex="100" fxFlex.lt-sm="100">
+
+                            <ng-container matColumnDef="parada">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Parada
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let row"> {{row.parada + 1}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="nombre">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Descripción de parada
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let row"> {{row.nombre}} </mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table>
+
+                        <mat-paginator [pageSize]="3" [pageSizeOptions]="[3]">
+                        </mat-paginator>
+
+                    </div>
+
+                </mat-card-content>
+
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="columna" style="height: inherit;" fxLayoutAlign="center center">
+        <div #map
+            style="width: 90%;height:550px;border-color: black;border-style: solid;border-width: 1px;margin-top: 1%;">
+        </div>
+    </div>
+</div>

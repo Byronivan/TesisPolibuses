@@ -1,0 +1,101 @@
+<router-outlet></router-outlet>
+<div *ngIf="route.children.length == 0">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="box">
+            <div fxLayoutAlign="start">
+                <button mat-stroked-button color="warn" matTooltip="Regresar" routerLink='/moduloRutas'>
+                    <mat-icon>first_page</mat-icon>
+                    Regresar
+                </button>
+            </div>
+            <mat-card-header fxLayoutAlign="center center">
+                <mat-card-title fxLayoutAlign="center center">
+                    <h2>Horarios</h2>
+                </mat-card-title>
+                <mat-card-title fxLayoutAlign="center center">
+                <button mat-raised-button color="primary" style="float: right" matTooltip="Agregar nuevo Horario"
+                    routerLink='/moduloRutas/visualizarHorarios/crearHorarios'>
+                    Nuevo Horario
+                    <mat-icon>add</mat-icon>
+                </button>
+            </mat-card-title>
+            </mat-card-header>
+
+            <div fxLayout fxLayoutAlign="center center">
+                <mat-form-field fxFlex="40%">
+                    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+            </div>
+
+            <mat-card-content>
+                <form class="matero-form-horizontal">
+                    <mat-table [dataSource]="dataSource" matSort>
+
+                        <ng-container matColumnDef="nombre">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre de la trayectoria
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.nombreTrayectoria}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="origen">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Origen
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.horarioO.nombre}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="destino">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Destino
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.horarioD.nombre}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="detalleM">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Ver Detalle Mañana
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <button mat-icon-button style="color: rgb(3, 3, 3);" matTooltip="Ver Detalle"
+                                (click)="verHorario(row)">
+                                    <mat-icon aria-label="Visualizar" style="color: rgb(247, 222, 0);">wb_sunny</mat-icon> Mañana
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="detalleN">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Ver Detalle Noche
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <button mat-icon-button style="color: rgb(4, 12, 48);" matTooltip="Ver Detalle"
+                                (click)="verHorarioN(row)">
+                                    <mat-icon aria-label="Visualizar" style="color: rgb(0, 38, 255);">nights_stay</mat-icon> Noche
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+                       
+                    
+                        <ng-container matColumnDef="acciones">
+                            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                               
+                            
+                                <button mat-icon-button color="primary" matTooltip="Modificar"
+                                    [routerLink]="['edicionHorarios', row.id]">
+                                    <mat-icon aria-label="Actualizar">edit</mat-icon>
+                                </button>
+                                
+                                <button mat-icon-button color="accent" matTooltip="Eliminar" (click)="eliminar(row)">
+                                    <mat-icon aria-label="Eliminar">highlight_off</mat-icon>
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+
+                    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5]"></mat-paginator>
+
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
