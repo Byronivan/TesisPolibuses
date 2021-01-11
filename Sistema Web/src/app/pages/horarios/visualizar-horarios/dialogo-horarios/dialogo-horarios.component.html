@@ -1,0 +1,86 @@
+<div class="register-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <div fxLayoutAlign="start">
+            <button mat-stroked-button color="warn" matTooltip="Regresar" (click)="cancelar()">
+                <mat-icon>first_page</mat-icon>
+                Regresar
+            </button>
+        </div>
+        <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-title>
+                <h3>Horarios de <a style="color: rgb(247, 222, 0);">{{horario.nombreTrayectoria}}</a></h3>
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <div fxLayout="row wrap" fxLayoutGap="6px grid">
+
+                <div [hidden]="true">
+                    <input matInput placeholder="id">
+                </div>
+
+                <div fxFlex="50" fxFlex.lt-sm="100">
+                    <mat-form-field style="width: 90%;">
+                        <input matInput class="input" type="text" name="origen" [(ngModel)]="horario.horarioO.nombre"
+                            #addresstext placeholder="Origen" readonly="readonly">
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="25" fxFlex.lt-sm="100">
+                    <mat-form-field style="width: 90%;">
+                        <input matInput class="input" type="time" name="horaO" [(ngModel)]="horario.horarioO.horaOM"   
+                            placeholder="Horario Mañana" #horaO readonly="readonly" style="text-align: center;">
+                    </mat-form-field>
+                </div>
+
+
+                <div fxFlex="50" fxFlex.lt-sm="100">
+                    <mat-form-field style="width: 90%;">
+                        <input matInput class="input" type="text" name="destino" [(ngModel)]="horario.horarioD.nombre" #destino
+                            placeholder="Destino" readonly="readonly">
+                    </mat-form-field>
+                </div>
+
+
+                <div fxFlex="25" fxFlex.lt-sm="100">
+                    <mat-form-field style="width: 90%;">
+                        <input matInput class="input" type="time" name="horaD" [(ngModel)]="horario.horarioD.horaDM"
+                            placeholder="Hora Mañana" #horaD readonly="readonly" style="text-align: center;">
+                    </mat-form-field>
+                </div>
+
+
+              
+                <mat-table [dataSource]="dataSource" matSort fxFlex="100" fxFlex.lt-sm="100">
+
+                    <ng-container matColumnDef="idp">
+                        <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center"> Numero Paradas
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row" fxLayoutAlign="center center"> {{row.id+1}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="nombre">
+                        <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center"> Nombre de las
+                            Paradas
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.nombre}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="horarioD">
+                        <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center"> Horario Día
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row" fxLayoutAlign="center center"> {{row.horarioM}}</mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+
+                <mat-paginator [pageSize]="5" [pageSizeOptions]="[5]"></mat-paginator>
+
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,71 @@
+<div class="page-wrap">
+
+    <main class="content">
+
+        <div class="register-wrapper" fxLayout="row" fxLayoutAlign="center center">
+            <mat-card class="box">
+                <mat-card-header fxLayoutAlign="center center">
+                    <mat-card-title>
+                        <h2>Detalle de la Notificación </h2>
+                    </mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <div fxLayout="row wrap" fxLayoutGap="6px grid" class="matero-form-horizontal">
+                        <div [hidden]="true">
+                            <mat-form-field>
+                                <input matInput placeholder="id" [(ngModel)]="notificacion.id">
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="100" fxFlex.lt-sm="100" fxLayoutAlign="center center">
+                            <img mat-card-image [src]="urlImagen" *ngIf="urlImagen" style="width: 125px;height: 145px; border: black 1px solid;">
+                        </div>
+
+                        <div fxFlex="100" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 100%;">
+                                <mat-label>Asunto</mat-label>
+                                <input matInput placeholder="Asunto" [(ngModel)]="notificacion.asunto"
+                                    readonly="readonly">
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 100%;">
+                                <mat-label>Fecha de envío</mat-label>
+                                <input matInput placeholder="fecha" [(ngModel)]="notificacion.fecha" readonly="readonly"
+                                    hidden>
+                                <p>{{fechaCreacion.toDate() | date : 'dd-MM-yyyy'}}</p>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 100%;">
+                                <mat-label>Fecha de aplicación</mat-label>
+                                <input matInput placeholder="fecha" [(ngModel)]="notificacion.fecha" readonly="readonly"
+                                    hidden>
+                                <p>{{notificacion.fecha.toDate() | date : 'dd-MM-yyyy'}}</p>
+                            </mat-form-field>
+                        </div>
+
+
+                        <div fxFlex="100" fxFlex.lt-sm="100">
+                            <mat-form-field style="width: 100%;">
+                                <mat-label>Descripción</mat-label>
+                                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10" placeholder="descripcion"
+                                    [(ngModel)]="notificacion.descripcion" readonly="readonly"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-card-content class="botones" fxLayoutAlign="center center">
+                        <button mat-stroked-button color="warn" (click)="cancelar()" type="button"
+                            class="btn-block">Aceptar</button>
+                    </mat-card-content>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </main>
+</div>

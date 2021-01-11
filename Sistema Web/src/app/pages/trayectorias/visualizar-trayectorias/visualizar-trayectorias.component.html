@@ -1,0 +1,76 @@
+<router-outlet></router-outlet>
+<div *ngIf="route.children.length == 0">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="box">
+            <div fxLayoutAlign="start">
+                <button mat-stroked-button color="warn" matTooltip="Regresar" routerLink='/moduloRutas'>
+                    <mat-icon>first_page</mat-icon>
+                    Regresar
+                </button>
+            </div>
+            <mat-card-header fxLayoutAlign="center center">
+                <mat-card-title>
+                    <h2>Trayectorias</h2>
+                </mat-card-title>
+
+                <mat-card-title>
+                    <button mat-raised-button color="primary"  matTooltip="Agregar nueva Trayectoria"
+                        routerLink='/moduloRutas/visualizarTrayectoria/crearTrayectoria'>
+                        Nueva Trayectoria
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </mat-card-title>
+            </mat-card-header>
+
+
+            <mat-card-content>
+                <div fxLayout fxLayoutAlign="center center">
+                    <mat-form-field fxFlex="40%">
+                      <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+                    </mat-form-field>
+                  </div>
+                <form>
+                    <mat-table [dataSource]="dataSource" matSort>
+
+                        <ng-container matColumnDef="nombre">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> Nombre de la trayectoria
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.nombre}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="numParadas">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header fxLayoutAlign="center center"> Número de Paradas
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxLayoutAlign="center center">{{row.paradas.length+2}}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="acciones">
+                            <mat-header-cell *matHeaderCellDef fxLayoutAlign="center center">Acciones</mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxLayoutAlign="center center">
+                                <button mat-icon-button color="primary" matTooltip="Visualizar"
+                                    (click)="verTrayectoria(row)">
+                                    <mat-icon aria-label="Dialogo">search</mat-icon>
+                                </button>
+                                <!--<button mat-icon-button color="primary" matTooltip="Modificar"
+                                            [routerLink]="['edicionPersonal', row.uid]">
+                                            <mat-icon aria-label="Actualizar">edit</mat-icon>
+                                    </button>
+                                --->
+                                <button mat-icon-button color="accent" matTooltip="Eliminar" (click)="eliminar(row)">
+                                    <mat-icon aria-label="Eliminar">highlight_off</mat-icon>
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+
+                    <mat-paginator [pageSize]="4" [pageSizeOptions]="[4]">
+                    </mat-paginator>
+                </form>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

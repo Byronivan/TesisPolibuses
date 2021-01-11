@@ -1,0 +1,133 @@
+<div fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-title fxLayoutAlign="center center">
+                <h4> Actualizar Informacion</h4>
+            </mat-card-title>
+            <mat-card-title fxLayoutAlign="center center">
+                <div style="width: 100%;height: 120px" fxLayoutAlign="center center"
+                    *ngIf="loginService.getCurrentUser().url != 'sin url'">
+                    <img [src]="loginService.getCurrentUser().url"
+                        style="width: 105px;height: inherit; border: black 1px solid;">
+                </div>
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="form" (ngSubmit)="operar()" class="matero-form-horizontal">
+
+                <div fxLayout="row wrap" fxLayoutGap="3px grid">
+
+                    <div [hidden]="true">
+                        <mat-form-field>
+                            <input matInput placeholder="id" formControlName="uid">
+                        </mat-form-field>
+                    </div>
+
+                    <!--
+                    <div fxFlex="100" fxFlex.lt-sm="100" fxLayoutAlign="center center">
+                        <input #file id="input_subida" type="file" accept='image/*' style="display:none"
+                            (change)="seleccionar(file.files,$event)"> 
+                        <img mat-card-image [src]="urlImagen" *ngIf="editando()&&urlImagen"
+                            style="width: 110px; height: 150; border: black 1px solid;">
+                        <img [src]="imgURL" *ngIf="imgURL"
+                            style="width: 110px;height: 150; border: black 1px solid;">
+                    </div>
+
+                    
+                    <div fxFlex="100" fxFlex.lt-sm="100" fxLayoutAlign="center center">
+                        <button mat-raised-button color="primary"
+                            onclick="document.getElementById('input_subida').click()" type="button">Cargar
+                            Foto</button>
+                    </div>
+                    -->
+                    <div fxFlex="50" fxFlex.lt-sm="100">
+                        <mat-form-field style="width: 90%;">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput placeholder="Ingresa el nombre" formControlName="nombre" pattern="[a-zA-Z]*"
+                                required>
+                            <mat-error *ngIf="f.nombre.errors?.required" class="invalido">
+                                Nombre es requerido
+                            </mat-error>
+                            <mat-error *ngIf="f.nombre.errors?.pattern" class="invalido">
+                                El campo nombre solamente recibe caracteres
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex="50" fxFlex.lt-sm="100">
+                        <mat-form-field style="width: 90%;">
+                            <mat-label>Apellido</mat-label>
+                            <input matInput placeholder="Ingresa el apellido" formControlName="apellido"
+                                pattern="[a-zA-Z]*" required>
+                            <mat-error *ngIf="f.apellido.errors?.required" class="invalido">
+                                Apellido es requerido
+                            </mat-error>
+                            <mat-error *ngIf="f.apellido.errors?.pattern" class="invalido">
+                                El campo apellido solamente recibe caracteres
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex="50" fxFlex.lt-sm="100">
+                        <mat-form-field style="width: 90%;">
+                            <mat-label>Teléfono</mat-label>
+                            <input matInput placeholder="Ingresa el número de teléfono" formControlName="celular"
+                                required>
+                            <mat-icon matSuffix>smartphone</mat-icon>
+                            <mat-error *ngIf="f.celular.errors?.required" class="invalido">
+                                Número de contacto es requerido
+                            </mat-error>
+                            <mat-error *ngIf="f.celular.errors?.pattern" class="invalido">
+                                No se permite letras
+                            </mat-error>
+                            <mat-error *ngIf="f.celular.errors?.minlength" class="invalido">
+                                Ingresa un número de teléfono válido
+                            </mat-error>
+                            <mat-error *ngIf="f.celular.errors?.maxlength" class="invalido">
+                                Ingresa un número de teléfono válido
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex="50" fxFlex.lt-sm="100">
+                        <mat-form-field style="width: 90%;">
+                            <mat-label>Cédula de identidad</mat-label>
+                            <input matInput placeholder="Ingresa el número de identidad" formControlName="cedula"
+                                required>
+                            <mat-icon matSuffix>contacts</mat-icon>
+                            <mat-error *ngIf="f.cedula.errors?.required" class="invalido">
+                                Número de identidad es requerido
+                            </mat-error>
+                            <mat-error *ngIf="f.cedula.errors?.pattern" class="invalido">
+                                No se permite letras
+                            </mat-error>
+                            <mat-error *ngIf="f.cedula.errors?.minlength" class="invalido">
+                                Ingresa un número de cédula válido
+                            </mat-error>
+                            <mat-error *ngIf="f.cedula.errors?.maxlength" class="invalido">
+                                Ingresa un número de cédula válido
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+
+                <mat-card-content class="botones" fxLayoutAlign="center center">
+                    <div fxLayout="row wrap" fxLayoutGap="30px grid">
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <button mat-stroked-button color="accent" class="btn-block" type="submit"
+                                [disabled]="form.invalid">Guardar</button>
+                        </div>
+
+                        <div fxFlex="50" fxFlex.lt-sm="100">
+                            <button mat-stroked-button color="warn" routerLink="/perfil"
+                                class="btn-block">Cancelar</button>
+                        </div>
+                    </div>
+                </mat-card-content>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
